@@ -172,6 +172,7 @@ void updateData() {
 	}
 }
 int main() {
+
 	setlocale(LC_ALL, "Russian");
 	system("cls");     cout << "\t\t\t Добро пожаловать в ваш список дел " << endl;
 	ifstream read;     read.open("id.txt");
