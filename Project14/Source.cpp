@@ -25,7 +25,7 @@ void addtodo() {
 	system("cls");
 	cout << "\t\t\t Добро пожаловать в ваш список дел " << endl;
 	todo newTodo;
-	cout << "\n\tВведите крайний срок выполнения, затем новую задачу через двоеточие: ";
+	cout << "\n\tВведите крайний срок выполнения, затем новую задачу через двоеточие: " << endl;
 	cin.ignore();
 	getline(cin, newTodo.task);
 	ID++;
@@ -47,7 +47,7 @@ void addtodo() {
 		addtodo();
 	}
 	else {
-		cout << "\n\tЗадача успешно добавлена";
+		cout << "\n\tЗадача успешно добавлена, нажите любую клавишу для выхода в меню" << endl;
 		return;
 	}
 }
@@ -55,6 +55,7 @@ void addtodo() {
 void print(todo s) {
 	cout << "\n\tID is: " << s.id;
 	cout << "\n\tTask is: " << s.task << "\n\t";
+	cout << "\n\tнажите любую клавишу для выхода в меню" << endl;
 }
 
 void readData() {
@@ -64,7 +65,7 @@ void readData() {
 	todo newTodo;
 	ifstream read;
 	read.open("todo.txt");
-	cout << "\n\t Ваши текущие задачи в списке";
+	cout << "\n\t Ваши текущие задачи в списке, нажите любую клавишу для выхода в меню"<<endl;
 
 	while (read >> newTodo.id) {
 		read.ignore();
@@ -72,7 +73,8 @@ void readData() {
 		print(newTodo);
 	}
 	read.close();
-	system("pause");
+	system("pause>nul");
+	cout << "\t\nнажите любую клавишу для выхода в меню" << endl;
 }
 
 int searchData() {
@@ -80,7 +82,7 @@ int searchData() {
 	system("cls");
 	cout << "\t\t\t Добро пожаловать в ваш список дел " << endl;
 	int id;
-	cout << "\n\t Введите идентификатор задачи: ";
+	cout << "\n\t Введите идентификатор задачи: " << endl;
 	cin >> id;
 	todo newTodo;
 	ifstream read;
@@ -92,6 +94,7 @@ int searchData() {
 		if (newTodo.id == id) {
 			print(newTodo);
 			return id;
+			
 		}
 	}
 	read.close();
@@ -104,7 +107,7 @@ void deleteData() {
 
 	int id = searchData();
 	setlocale(LC_ALL, "Russian");
-	cout << "\n\tВы хотите удалить эту задачу (y/n) :";
+	cout << "\n\tВы хотите удалить эту задачу (y/n) :" << endl;
 	char choice;
 	cin >> choice;
 	if (choice == 'y') {
@@ -125,10 +128,10 @@ void deleteData() {
 		tempFile.close();
 		remove("todo.txt");
 		rename("temp.txt", "todo.txt");
-		cout << "\n\tЗадача успешно удалена";
+		cout << "\n\tЗадача успешно удалена" << endl;
 	}
 	else {
-		cout << "\n\tЗапись не удалена";
+		cout << "\n\tЗапись не удалена" << endl;
 	}
 }
 
@@ -137,13 +140,13 @@ void updateData() {
 	system("cls");
 	cout << "\t\t\t Добро пожаловать в ваш список дел " << endl;
 	int id = searchData();
-	cout << "\n\tВы хотите обновить эту задачу (y/n) : ";
+	cout << "\n\tВы хотите обновить эту задачу (y/n) : "<<endl;
 	char choice;
 	cin >> choice;
 
 	if (choice == 'y') {
 		todo newData;
-		cout << "\n\tВведите текущую задачу : ";
+		cout << "\n\tВведите текущую задачу : " << endl;
 		cin.ignore();
 		getline(cin, newData.task);
 		todo newTodo;
@@ -165,10 +168,10 @@ void updateData() {
 		}
 		read.close();
 		tempFile.close();         remove("todo.txt");
-		rename("temp.txt", "todo.txt");         cout << "\n\tЗадача успешно обновлена";
+		rename("temp.txt", "todo.txt");         cout << "\n\tЗадача успешно обновлена" << endl;
 	}
 	else {
-		cout << "\n\tЗапись не обновлена";
+		cout << "\n\tЗапись не обновлена, нажите любую клавишу для выхода в меню";
 	}
 }
 int main() {
@@ -192,8 +195,8 @@ int main() {
 		break;         case '4':
 			updateData();             break;
 		case '5':             exit(0);
-		default:             cout << "\n\tНеверный ввод. Попробуйте еще раз.";
-		}         system("pause");
+		default:             cout << "\n\tНеверный ввод. Попробуйте еще раз." << endl;
+		}
 	} while (ch != '5');
 	return 0;
 }
